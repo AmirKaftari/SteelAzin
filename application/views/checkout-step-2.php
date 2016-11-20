@@ -2,9 +2,6 @@
 <body class=" checkout-page">
     
     <div class="master-wrapper">
-     
-    
-    
     <div class="container">
         <div class="row">
             
@@ -52,7 +49,7 @@
                     		    	اطلاعات ارسال
                     		    	</div>
                     		    	<div class="step">
-                                        <div class="step-badge">2</div>
+                                        <div class="step-badge">3</div>
                                         شیوه پرداخت
                                     </div>
                     		    	<div class="step">
