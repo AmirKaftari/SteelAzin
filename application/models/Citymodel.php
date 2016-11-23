@@ -3,11 +3,11 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Productmodel extends CI_Model
+class Citymodel extends CI_Model
 {
 
-    public $table = 'tbl_product';
-    public $id = 'ID';
+    public $table = 'city';
+    public $id = 'id';
     public $order = 'DESC';
 
     function __construct()
@@ -28,12 +28,6 @@ class Productmodel extends CI_Model
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-
-    function get_featured_list()
-    {
-        $this->db->where('Special', 1);
-        return $this->db->get($this->table)->result();
-    }
     
     // get total rows
     function total_rows() {
@@ -50,12 +44,9 @@ class Productmodel extends CI_Model
     
     // get search total rows
     function search_total_rows($keyword = NULL) {
-        $this->db->like('ID', $keyword);
-	$this->db->or_like('Code', $keyword);
-	$this->db->or_like('Title', $keyword);
-	$this->db->or_like('Price', $keyword);
-	$this->db->or_like('Photo', $keyword);
-	$this->db->or_like('Discript', $keyword);
+        $this->db->like('id', $keyword);
+	$this->db->or_like('province_id', $keyword);
+	$this->db->or_like('name', $keyword);
 	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -63,12 +54,9 @@ class Productmodel extends CI_Model
     // get search data with limit
     function search_index_limit($limit, $start = 0, $keyword = NULL) {
         $this->db->order_by($this->id, $this->order);
-        $this->db->like('ID', $keyword);
-	$this->db->or_like('Code', $keyword);
-	$this->db->or_like('Title', $keyword);
-	$this->db->or_like('Price', $keyword);
-	$this->db->or_like('Photo', $keyword);
-	$this->db->or_like('Discript', $keyword);
+        $this->db->like('id', $keyword);
+	$this->db->or_like('province_id', $keyword);
+	$this->db->or_like('name', $keyword);
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
@@ -95,5 +83,5 @@ class Productmodel extends CI_Model
 
 }
 
-/* End of file Productmodel.php */
-/* Location: ./application/models/Productmodel.php */
+/* End of file Citymodel.php */
+/* Location: ./application/models/Citymodel.php */

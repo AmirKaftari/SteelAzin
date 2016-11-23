@@ -61,6 +61,7 @@
                     		<!--  ==========  -->
 							<!--  = Selected Items =  -->
 							<!--  ==========  -->
+							<form action="<?php echo base_url('Indexcontroller/checkout_step_2') ?>" method="post" class="form-horizontal form-checkout parsley-validate">
 							<table class="table table-items">
 							    <thead>
 							    	<tr>
@@ -75,7 +76,7 @@
 							        	<td class="image"><img src="<?php echo base_url('uploads/new_products/'.$Pic) ?>" alt="" width="124" height="124" /></td>
 							        	<td class="desc"><?php echo $Title; ?>&nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
 							        	<td class="qty">
-							        	    <input type="text" class="tiny-size" value="<?php echo $Count; ?>" />
+							        	    <input name="txtNewCount" id="txtNewCount" type="text" class="tiny-size" value="<?php echo $Count; ?>" />
 					            	    </td>
 							        	<td class="price">
 											<?php echo $Price; ?>
@@ -83,13 +84,14 @@
 							        </tr>
 							    </tbody>
 							</table>
-							
+							<p class="right-align">
+									در مرحله بعدی شما آدرس ارسال را انتخاب خواهید کرد. &nbsp; &nbsp;
+								<button type="submit" class="btn btn-primary higher bold"> ادامه </button>
+							</p>
+							</form>
 							<hr />
 							
-							<p class="right-align">
-							    در مرحله بعدی شما آدرس ارسال را انتخاب خواهید کرد. &nbsp; &nbsp;
-							    <a href="<?php echo base_url('Indexcontroller/checkout_step_2') ?>" class="btn btn-primary higher bold">ادامه</a>
-							</p>
+
                     	</div>
                     </div>
                 </div>

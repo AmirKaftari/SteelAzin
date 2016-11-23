@@ -11,6 +11,7 @@ class Indexcontroller extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Productmodel');
+        $this->load->model('Custommodel');
     }
 
     public function single_product($id)
@@ -39,11 +40,48 @@ class Indexcontroller extends CI_Controller
 
     public function checkout_step_2()
     {
+        $listState= $this->Custommodel->getAllState();
+
+        if($this->session->userdata('Count') != $this->input->post('txtNewCount'))
+        {
+            $new_price = $this->input->post('txtNewCount') * $this->session->userdata('Price');
+
+            $dataSession = array('new_count'=>$this->input->post('txtNewCount'),
+                                 'new_price'=>$new_price,);
+            $this->session->set_userdata($dataSession);
+
+        }
+
+        $data = array('listState'=> $listState);
         $idUser = $this->session->userdata('IdUser');
+
         if(!is_null($idUser))
         {
-            $this->load->view('checkout-step-2');
+            $this->load->view('checkout-step-2',$data);
         }
-        $this->load->view('checkout-step-2');
+        $this->load->view('checkout-step-2',$data);
+    }
+
+    public function checkout_step_3()
+    {
+        $data = array('Receiver'=>$this->input->post('txtReceiver'),
+                      'CellPhone'=>$this->input->post('txtCellPhone'),
+                      'Phone'=>$this->input->post('txtPhone'),
+                      'State'=>$this->input->post('_IDState'),
+                      'City'=>$this->input->post('city_dropdown'),
+                      'Address'=>$this->input->post('txtAddress'),
+            );
+        $this->session->set_userdata($data);
+        $this->load->view('checkout-step-3');
+    }
+
+    public function checkout_step_4()
+    {
+        $this->load->view('checkout-step-4');
+    }
+
+    public function shop()
+    {
+        $this->load->view('shop');
     }
 }

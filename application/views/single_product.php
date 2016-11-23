@@ -57,28 +57,41 @@
                         <!--  ==========  -->
                         <!--  = Add to cart form =  -->
                         <!--  ==========  -->
-                        <form method="post" action="<?php echo base_url('Indexcontroller/start_buy') ?>" class="form  clearfix">
-                            <div class="numbered">
-                            	<input type="text" name="txtCount" value="1" class="tiny-size" />
-                            	<span class="clickable add-one icon-plus-sign-alt"></span>
-                            	<span class="clickable remove-one icon-minus-sign-alt"></span>
+                        <form method="post" action="<?php echo base_url('Indexcontroller/start_buy') ?>" class="parsley-validate form-horizontal">
+
+
+                                <div class="numbered">
+                                    <input type="text" name="txtCount" value="1" class="tiny-size" />
+                                    <span class="clickable add-one icon-plus-sign-alt"></span>
+                                    <span class="clickable remove-one icon-minus-sign-alt"></span>
+                                </div>
+
+                           <br>
+
+                            <div class="input-group">
+                                <select name="txtColor" class="span2">
+                                    <option value="-1">مهم نیست</option>
+                                    <option value="blue">آبی</option>
+                                    <option value="orange">نارنجی</option>
+                                    <option value="black">مشکی</option>
+                                </select>
                             </div>
-                            &nbsp;
-                            <select name="txtColor" class="span2">
-                                <option value="-1">انتخاب رنگ</option>
-                                <option value="blue">آبی</option>
-                                <option value="orange">نارنجی</option>
-                                <option value="black">مشکی</option>
-                            </select>
-                            &nbsp;
-                            <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
-                                       name="txtWidth" id="txtWidth" class="area form-control" placeholder="عرض به سانتی متر">
-                            &nbsp;
-                            <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
-                                   name="txtHeight" id="txtHeight" class="area form-control" placeholder="طول به سانتی متر">
-                            &nbsp;
-                            <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
-                                   name="txtArea" disabled="disabled" id="txtArea" class=" form-control" placeholder="مساحت">
+                            <br>
+                            <div class="input-group">
+                                <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
+                                           name="txtWidth" id="txtWidth" class="area form-control" placeholder="عرض به سانتی متر">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
+                                       name="txtHeight" id="txtHeight" class="area form-control" placeholder="طول به سانتی متر">
+                            </div>
+                            <br>
+                            <div class="input-group">
+                                <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"
+                                       name="txtArea" disabled="disabled" id="txtArea" class=" form-control" placeholder="مساحت">
+                            </div>
+                            <br>
                             <input type="hidden" name="txtAreaValue" id="txtAreaValue">
                             <input type="hidden" name="txtTitle" id="txtTitle" value="<?php echo $single_product->Title; ?>">
                             <input type="hidden" name="txtPicUrl" id="txtPicUrl" value="<?php echo $single_product->Photo ?>">

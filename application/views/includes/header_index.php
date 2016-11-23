@@ -133,7 +133,7 @@
                                 </li>
 
                                 <li>
-                                    <a href="#" class="dropdown-toggle"> فروشگاه <b></b> </a>
+                                    <a href="<?php echo base_url('Indexcontroller/shop') ?>" class="dropdown-toggle"> فروشگاه <b></b> </a>
                                     <!--<ul class="dropdown-menu">
                                         <li><a href="shop.html">قالب بندی پیش فرض</a></li>
                                         <li><a href="shop-no-sidebar.html">تمام صفحه</a></li>

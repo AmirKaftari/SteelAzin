@@ -100,6 +100,9 @@ class Productcontroller extends CI_Controller
 	    'Price' => set_value('Price'),
 	    'Photo' => set_value('Photo'),
 	    'Discript' => set_value('Discript'),
+	    'Detail' => set_value('$Detail'),
+	    'Stock' => set_value('Stock'),
+	    'Special' => set_value('Special'),
 	);
         $this->template->load('_layout_admin','product/tbl_product_form', $data);
     }
@@ -122,6 +125,9 @@ class Productcontroller extends CI_Controller
                 'Price' => $this->input->post('Price',TRUE),
                 'Photo' => $picPath,
                 'Discript' => $this->input->post('Discript',TRUE),
+                'Detail' => $this->input->post('Detail',TRUE),
+                'Stock' => $this->input->post('Stock',TRUE),
+                'Special' => $this->input->post('Special',TRUE),
                 );
 
             $this->productmodel->insert($data);
@@ -144,6 +150,9 @@ class Productcontroller extends CI_Controller
 		'Price' => set_value('Price', $row->Price),
 		'Photo' => set_value('Photo', $row->Photo),
 		'Discript' => set_value('Discript', $row->Discript),
+		'Detail' => set_value('Detail', $row->Detail),
+		'Stock' => set_value('Stock', $row->Stock),
+		'Special' => set_value('Special', $row->Special),
 	    );
             $this->template->load('_layout_admin','product/tbl_product_form', $data);
         } else {
@@ -171,6 +180,9 @@ class Productcontroller extends CI_Controller
                 'Price' => $this->input->post('Price',TRUE),
                 'Photo' => $picPath,
                 'Discript' => $this->input->post('Discript',TRUE),
+                'Detail' => $this->input->post('Detail',TRUE),
+                'Stock' => $this->input->post('Stock',TRUE),
+                'Special' => $this->input->post('Special',TRUE),
                 );
 
             $this->productmodel->update($this->input->post('ID', TRUE), $data);
@@ -198,6 +210,7 @@ class Productcontroller extends CI_Controller
 	$this->form_validation->set_rules('Code', ' ', 'trim|required|numeric');
 	$this->form_validation->set_rules('Title', ' ', 'trim|required');
 	$this->form_validation->set_rules('Price', ' ', 'trim|required|numeric');
+	$this->form_validation->set_rules('Stock', ' ', 'trim|required|numeric');
 	$this->form_validation->set_rules('ID', 'ID', 'trim');
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }

@@ -63,62 +63,73 @@
 							<!--  = Shipping addr form =  -->
 							<!--  ==========  -->
 							    
-						    <form action="#" method="post" class="form-horizontal form-checkout">
+						    <form action="<?php echo base_url('Indexcontroller/checkout_step_3') ?>" method="post" class="form-horizontal form-checkout parsley-validate">
                                 <div class="control-group">
-                                    <label class="control-label" for="firstName">تحویل گیرنده<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="firstName">تحویل گیرنده<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <input type="text" id="firstName" class="span4" required>
+                                        <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text" name="txtReceiver" id="txtReceiver" class="span4" >
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="telephone">شماره تماس همراه<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="telephone">شماره تماس همراه<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <input type="tel" id="telephone" class="span4" required>
+                                        <input type="tel" name="txtCellPhone" id="txtCellPhone" class="span4" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true">
                                     </div>
                                 </div>
                                 <div class="control-group">
-                                    <label class="control-label" for="email">شماره تماس ثابت<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="email">شماره تماس ثابت<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <input type="email" id="email" class="span4" required>
-                                    </div>
-                                </div>
-
-                                <div class="control-group">
-                                    <label class="control-label" for="country">استان<span class="red-clr bold">*</span></label>
-                                    <div class="controls">
-                                        <select id="country" class="as-span4"></select>
+                                        <input type="text" name="txtPhone" id="txtPhone" class="span4" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true">
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label" for="country">شهر<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="country">استان<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <select id="country" class="as-span4"></select>
+                                        <select data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true"
+                                                name="_IDState" id="_IDState" class="form-control"
+                                                onchange="selectCity(this.options[this.selectedIndex].value)">
+                                            <option value="-1">انتخاب کنید</option>
+                                            <?php
+                                            foreach ($listState as $value): ?>
+                                                <option value="<?php echo $value->id ?>"><?php echo $value->name ?></option>
+                                            <?php endforeach ?>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label" for="addr1">آدرس<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="country">شهر<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <input type="text" id="addr1" class="span4" required>
+                                        <select data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" name="city_dropdown" class="form-control chosen-select" id="city_dropdown">
+                                            <option value=""></option>
+                                        </select>
                                     </div>
                                 </div>
 
                                 <div class="control-group">
-                                    <label class="control-label" for="zip">کد پستی<span class="red-clr bold">*</span></label>
+                                    <label class="control-label" for="addr1">آدرس<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
-                                        <input type="text" id="zip" class="span4" >
+                                        <textarea name="txtAddress" cols="20" rows="10" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true"></textarea>
                                     </div>
                                 </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="zip">کد پستی<span class="red-clr bold"> * </span></label>
+                                    <div class="controls">
+                                        <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text" name="txtZipCode" id="txtZipCode" class="span4" >
+                                    </div>
+                                </div>
+                                <p class="right-align">
+                                    در مرحله بعدی شما شیوه پرداخت را انتخاب میکنید &nbsp; &nbsp;
+                                    <button type="submit" class="btn btn-primary higher bold">ادامه</button>
+                                </p>
 
                             </form>
 							
                             <hr />
 						    
-						    <p class="right-align">
-						        در مرحله بعدی شما شیوه پرداخت را انتخاب میکنید &nbsp; &nbsp;
-						        <a href="checkout-step-3.html " class="btn btn-primary higher bold">ادامه</a>
-						    </p>
+
 							    
 							    
                     	</div>

@@ -11,5 +11,6 @@
     <file url="file://$PROJECT_DIR$/application/views/includes/product_featured.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/includes/slider_index.php" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/application/views/includes/three_banners.php" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/assets/js/my-custom.js" charset="UTF-8" />
   </component>
 </project>
