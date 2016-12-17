@@ -40,11 +40,6 @@ function upload($path,$filename = 'Pic', $type=null)
         $picPath = $data['file_name'];
         return $picPath;
     }
-    elseif(is_null($type))
-    {
-        echo $my_this->upload->display_errors();
-        exit;
-    }
     return null;
 }
 

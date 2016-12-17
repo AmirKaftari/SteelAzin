@@ -6,6 +6,7 @@ class Ajaxcallcontroller extends CI_Controller
 	{
 		parent::__construct();
 		$this->load->model('Custommodel');
+		$this->load->model('Categorymodel');
 	}
 	/*
 		This function load cities of state when user select StateId
@@ -22,6 +23,23 @@ class Ajaxcallcontroller extends CI_Controller
 			foreach ($result->result() as $city) 
 			{
 				$HTML .= "<option value='" . $city -> id . "'>" . $city -> name . "</option>";
+			}
+		}
+		echo $HTML;
+	}
+
+	public function loadSubCategoryByCategoryId()
+	{
+		$loadId = $_POST['loadId'];
+
+		$result = $this ->Categorymodel->get_by_parentId($loadId);
+		$HTML = "";
+
+		if ($result -> num_rows() > 0)
+		{
+			foreach ($result->result() as $subCategory)
+			{
+				$HTML .= "<option value='" . $subCategory -> ID . "'>" . $subCategory -> Title . "</option>";
 			}
 		}
 		echo $HTML;

@@ -12,6 +12,7 @@ class Indexcontroller extends CI_Controller
         parent::__construct();
         $this->load->model('Productmodel');
         $this->load->model('Custommodel');
+        $this->load->model('Categorymodel');
     }
 
     public function single_product($id)
@@ -80,8 +81,12 @@ class Indexcontroller extends CI_Controller
         $this->load->view('checkout-step-4');
     }
 
-    public function shop()
+    public function shop($categoryId)
     {
-        $this->load->view('shop');
+        $productList = $this->Productmodel->get_by_CategoryId($categoryId);
+        $subCategory = $this->Categorymodel->get_by_parentId($categoryId);
+        $data = array('productList'=>$productList,
+                      'subCategory'=>$subCategory);
+        $this->load->view('shop',$data);
     }
 }

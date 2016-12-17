@@ -20,13 +20,11 @@
     <link rel="stylesheet" href="<?php echo base_url();?>assets/js/rs-plugin/css/settings.css" type="text/css"/>
     <!-- jQuery UI -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/js/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css"/>
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/lightbox/css/lightbox.css" type="text/css"/>
     <!-- PrettyPhoto -->
     <link rel="stylesheet" href="<?php echo base_url();?>assets/js/prettyphoto/css/prettyPhoto.css" type="text/css"/>
     <!-- main styles -->
-
     <link href="<?php echo base_url();?>assets/stylesheets/main.css" rel="stylesheet">
-
-
 
     <!-- Modernizr -->
     <script src="<?php echo base_url();?>assets/js/modernizr.custom.56918.js"></script>
@@ -132,14 +130,15 @@
                                     </ul>-->
                                 </li>
 
-                                <li>
-                                    <a href="<?php echo base_url('Indexcontroller/shop') ?>" class="dropdown-toggle"> فروشگاه <b></b> </a>
-                                    <!--<ul class="dropdown-menu">
-                                        <li><a href="shop.html">قالب بندی پیش فرض</a></li>
-                                        <li><a href="shop-no-sidebar.html">تمام صفحه</a></li>
-                                        <li><a href="product.html">محصول تکی</a></li>
-                                        <li><a href="shop-search.html">نتایج جستجو</a></li>
-                                    </ul>-->
+                                <li class="dropdown">
+                                    <a href="<?php  ?>" class="dropdown-toggle"> فروشگاه <b class="caret"></b> </a>
+                                    <ul class="dropdown-menu">
+                                        <?php
+                                        $categoryList = instance('Categorymodel','get_parent');
+                                        foreach($categoryList as $category): ?>
+                                            <li><a href="<?php echo base_url('Indexcontroller/shop/'.$category->ID)?>"><?php echo $category->Title ?></a></li>
+                                        <?php endforeach; ?>
+                                    </ul>
                                 </li>
                               <!--  <li class="dropdown">
                                     <a href="blog.html" class="dropdown-toggle">بلاگ <b class="caret"></b> </a>

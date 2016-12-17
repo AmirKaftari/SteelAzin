@@ -19,7 +19,10 @@
                 <div class="span5">
                     <div class="product-preview">
                         <div class="picture">
-                            <img src="<?php echo base_url('uploads/new_products/'.$single_product->Photo) ?>" alt="" width="940" height="940" id="mainPreviewImg" />
+                            <a data-lightbox="image-1" href="<?php echo base_url('uploads/new_products/'.$single_product->Photo) ?>">
+                                <img data-lightbox="roadtrip" src="<?php echo base_url('uploads/new_products/'.$single_product->Photo) ?>"
+                                     alt="" width="940" height="940" id="mainPreviewImg" />
+                            </a>
                         </div>
                         <div class="thumbs clearfix">
                             <div class="thumb active">
@@ -65,17 +68,6 @@
                                     <span class="clickable add-one icon-plus-sign-alt"></span>
                                     <span class="clickable remove-one icon-minus-sign-alt"></span>
                                 </div>
-
-                           <br>
-
-                            <div class="input-group">
-                                <select name="txtColor" class="span2">
-                                    <option value="-1">مهم نیست</option>
-                                    <option value="blue">آبی</option>
-                                    <option value="orange">نارنجی</option>
-                                    <option value="black">مشکی</option>
-                                </select>
-                            </div>
                             <br>
                             <div class="input-group">
                                 <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text"

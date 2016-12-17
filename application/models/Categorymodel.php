@@ -3,10 +3,10 @@
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class Productmodel extends CI_Model
+class Categorymodel extends CI_Model
 {
 
-    public $table = 'tbl_product';
+    public $table = 'tbl_category';
     public $id = 'ID';
     public $order = 'DESC';
 
@@ -22,17 +22,23 @@ class Productmodel extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_parent()
+    {
+        $this->db->where('parentId', 0);
+        return $this->db->get($this->table)->result();
+    }
+
+    function get_by_parentId($parentId)
+    {
+        $this->db->where('parentId', $parentId);
+        return $this->db->get($this->table);
+    }
+
     // get data by id
     function get_by_id($id)
     {
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
-    }
-
-    function get_featured_list()
-    {
-        $this->db->where('Special', 1);
-        return $this->db->get($this->table)->result();
     }
     
     // get total rows
@@ -51,11 +57,7 @@ class Productmodel extends CI_Model
     // get search total rows
     function search_total_rows($keyword = NULL) {
         $this->db->like('ID', $keyword);
-	$this->db->or_like('Code', $keyword);
 	$this->db->or_like('Title', $keyword);
-	$this->db->or_like('Price', $keyword);
-	$this->db->or_like('Photo', $keyword);
-	$this->db->or_like('Discript', $keyword);
 	$this->db->from($this->table);
         return $this->db->count_all_results();
     }
@@ -64,11 +66,7 @@ class Productmodel extends CI_Model
     function search_index_limit($limit, $start = 0, $keyword = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('ID', $keyword);
-	$this->db->or_like('Code', $keyword);
 	$this->db->or_like('Title', $keyword);
-	$this->db->or_like('Price', $keyword);
-	$this->db->or_like('Photo', $keyword);
-	$this->db->or_like('Discript', $keyword);
 	$this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
@@ -93,13 +91,7 @@ class Productmodel extends CI_Model
         $this->db->delete($this->table);
     }
 
-    function get_by_CategoryId($categoryId)
-    {
-        $this->db->where('Category', $categoryId);
-        return $this->db->get($this->table)->result();
-    }
-
 }
 
-/* End of file Productmodel.php */
-/* Location: ./application/models/Productmodel.php */
+/* End of file Categorymodel.php */
+/* Location: ./application/models/Categorymodel.php */

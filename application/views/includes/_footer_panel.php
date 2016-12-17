@@ -5,4 +5,9 @@
     <script src="<?php echo base_url('') ?>assets/js/parsley.messages.fa.js"></script>
     <script src="<?php echo base_url('assets/js/blockUi.js'); ?>"></script>
     <script type="text/javascript" src="<?php echo base_url('assets/datePicker/js/persian-datepicker.js'); ?>"></script>
+    <script src="<?php echo base_url();?>assets/js/my-custom.js" type="text/javascript"></script>
+    <script src="<?php echo base_url();?>assets/js/bootstrap-fileupload.js" type="text/javascript"></script>
+    <script>
+        $('.parsley-validate').parsley();
+    </script>
     

@@ -147,7 +147,7 @@
                     </a>
                     <ul class="collapse" id="DDL_product">
                         <li><a href="<?php echo base_url('Productcontroller'); ?>"><i class="icon-angle-left"></i> لیست محصولات</a></li>
-                        <li><a href="#"><i class="icon-angle-left"></i> محصولات ویژه </a></li>
+                        <li><a href="<?php echo base_url('Categorycontroller') ?>"><i class="icon-angle-left"></i> دسته بندی محصولات </a></li>
                     </ul>
                 </li>
 

@@ -182,6 +182,7 @@
 <!--  = jQuery UI =  -->
 <script src="<?php echo base_url();?>assets/js/jquery-ui-1.10.3/js/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
 <script src="<?php echo base_url();?>assets/js/jquery-ui-1.10.3/touch-fix.min.js" type="text/javascript"></script>
+<script src="<?php echo base_url();?>assets/lightbox/js/lightbox.js" type="text/javascript"></script>
 
 <!--  = Isotope =  -->
 <script src="<?php echo base_url();?>assets/js/isotope/jquery.isotope.min.js" type="text/javascript"></script>

@@ -8,8 +8,8 @@
 var WebMarketVars = {
     currencyBefore: false, // true foe the currencies like USD, where the symbol comes before the number ($123.45). False for the symbol after the number (123,45 €)
     currencySymbol: "تومان",
-    priceRange: [ 0, 100000 ], // minimum and maximum range for the price range selector
-    priceStep: 20000
+    priceRange: [ 0, 70000 ], // minimum and maximum range for the price range selector
+    priceStep: 5000
 };
 
 jQuery(document).ready(function($) {

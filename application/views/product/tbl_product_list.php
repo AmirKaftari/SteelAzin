@@ -51,7 +51,7 @@
 			<td style="text-align:center">
 				<?php
 				echo anchor(site_url('productcontroller/update/'.$productcontroller->ID),'ویرایش'); 
-				echo ' | '; 
+				echo ' | ';
 				echo anchor(site_url('productcontroller/delete/'.$productcontroller->ID),'حذف','onclick="javasciprt: return confirm(\'آیا مطمئن هستید؟\')"'); 
 				?>
 			</td>
