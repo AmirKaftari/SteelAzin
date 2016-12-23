@@ -138,6 +138,18 @@
                 </li>
 
                 <li class="panel">
+                    <a href="<?php echo base_url('Settingcontroller'); ?>" >
+                        <i class="icon-columns"></i> تنظیمات عمومی
+                    </a>
+                </li>
+
+                <li class="panel">
+                    <a href="<?php echo base_url('Sendsetting'); ?>" >
+                        <i class="icon-columns"></i> تنظیمات ارسال محصول
+                    </a>
+                </li>
+
+                <li class="panel">
                     <a href="#" data-parent="#menu_product" data-toggle="collapse" class="accordion-toggle" data-target="#DDL_product">
                         <i class=" icon-columns"></i> مدیریت محصولات
 
@@ -195,6 +207,8 @@
                         <li><a href="#"><i class="icon-angle-left"></i> گزارش گیری سالانه </a></li>
                     </ul>
                 </li>
+
+
         
             </ul>
 

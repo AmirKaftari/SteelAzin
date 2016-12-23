@@ -9,6 +9,7 @@ class Productcontroller extends CI_Controller
     {
         parent::__construct();
         $this->load->model('productmodel');
+        $this->load->model('Productpicmodel');
         $this->load->model('categorymodel');
         $this->load->library('form_validation');
     }
@@ -103,9 +104,35 @@ class Productcontroller extends CI_Controller
         {
             $path_upload = 'uploads/new_products';
             $picPath = upload($path_upload);
-            if(!empty($_FILES['relatedPic']['name']))
-            {
 
+            if(!empty($_FILES['relatedPics']['name']))
+            {
+                $filesCount = count($_FILES['relatedPics']['name']);
+                for($i = 0; $i < $filesCount; $i++)
+                {
+                    $_FILES['relatedPic']['name'] = $_FILES['relatedPics']['name'][$i];
+                    $_FILES['relatedPic']['type'] = $_FILES['relatedPics']['type'][$i];
+                    $_FILES['relatedPic']['tmp_name'] = $_FILES['relatedPics']['tmp_name'][$i];
+                    $_FILES['relatedPic']['error'] = $_FILES['relatedPics']['error'][$i];
+                    $_FILES['relatedPic']['size'] = $_FILES['relatedPics']['size'][$i];
+
+                    $uploadPath = 'uploads/products_pic/';
+                    $config['upload_path'] = $uploadPath;
+                    $config['allowed_types'] = 'gif|jpg|png|jpeg';
+
+                    $this->load->library('upload', $config);
+                    $this->upload->initialize($config);
+                    if($this->upload->do_upload('relatedPic'))
+                    {
+                        $fileData = $this->upload->data();
+                        $uploadData['Pic'] = $fileData['file_name'];
+                        $uploadData['productId'] = $this->input->post('Code',TRUE);
+                    }
+                    if(!empty($uploadData))
+                    {
+                        $this->Productpicmodel->insert($uploadData);
+                    }
+                }
             }
 
             $data = array(
@@ -215,11 +242,19 @@ class Productcontroller extends CI_Controller
 
     public function _rules() 
     {
-	$this->form_validation->set_rules('Code', ' ', 'trim|required|numeric');
+	//$this->form_validation->set_rules('Code', ' ', 'trim|required|numeric');
 	$this->form_validation->set_rules('Title', ' ', 'trim|required');
 	$this->form_validation->set_rules('Price', ' ', 'trim|required|numeric');
 	$this->form_validation->set_rules('Stock', ' ', 'trim|required|numeric');
 	$this->form_validation->set_rules('ID', 'ID', 'trim');
+    $this->form_validation->set_rules(
+            'Code', 'Code',
+            'trim|required|numeric|is_unique[tbl_product.Code]',
+            array(
+                'required'      => 'You have not provided %s.',
+                'is_unique'     => 'This %s already exists.'
+            )
+    );
 	$this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');
     }
 };

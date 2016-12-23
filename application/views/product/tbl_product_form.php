@@ -34,7 +34,7 @@
                 <div class="controls">
                     <select data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" name="subCategory" class="form-control" id="subCategory">
                         <?php
-                        if(count($subCategory > 0))
+                        if(count($subCategory > 0) && isset($subCategory))
                         { ?>
                             <option value="<?php echo $subCategory->ID ?>"><?php echo $subCategory->Title ?></option>
                         <?php
@@ -88,7 +88,7 @@
 
         <div class="form-group">
               <label >تصاویر مرتبط</label>
-              <input name="relatedPic[]" multiple type="file" />
+              <input name="relatedPics[]" multiple type="file" />
         </div>
 
 

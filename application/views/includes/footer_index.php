@@ -209,13 +209,18 @@
 
 <script>
 
-    $(document).ready(function(){
+    $(document).ready(function()
+    {
         $(".area").keyup(function()
         {
             var val1 = $("#txtWidth").val();
             var val2 = $("#txtHeight").val();
             $("#txtArea").val(val1 * val2);
             $("#txtAreaValue").val(val1 * val2);
+            var area = $("#txtAreaValue").val();
+            var price = $("#txtPrice").val();
+            $("#txtCostValue").val(area * price);
+            $("#txtCost").val(area * price);
         });
     });
 

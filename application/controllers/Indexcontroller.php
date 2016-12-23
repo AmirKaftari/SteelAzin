@@ -11,6 +11,7 @@ class Indexcontroller extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Productmodel');
+        $this->load->model('Productpicmodel');
         $this->load->model('Custommodel');
         $this->load->model('Categorymodel');
     }
@@ -20,7 +21,11 @@ class Indexcontroller extends CI_Controller
         if(!is_null($id))
         {
             $single_product = $this->Productmodel->get_by_id($id);
-            $data = array('single_product'=>$single_product);
+            $related_product_code = $this->Productpicmodel->get_by_code_product($single_product->Code);
+            $data = array(
+                'single_product'=>$single_product,
+                'related_product_code'=>$related_product_code
+            );
             $this->load->view('single_product',$data);
         }
     }
@@ -29,13 +34,16 @@ class Indexcontroller extends CI_Controller
     {
         $data = array(
             'Title' => $this->input->post('txtTitle'),
-            'Price'=> $this->input->post('txtPrice'),
+            'Price'=> $this->input->post('txtCostValue'),
             'Pic'=> $this->input->post('txtPicUrl'),
             'Count'=> $this->input->post('txtCount'),
-            'Color'=> $this->input->post('txtColor'));
+            'Color'=> $this->input->post('txtColor'),
+            'Motor'=> $this->input->post('txtMotor'),
+            'Zanjir'=> $this->input->post('txtZanjir'),
+            'Paye'=> $this->input->post('txtPayeh'),
+            'Nasb'=> $this->input->post('txtNasb'));
 
         $this->session->set_userdata($data);
-
         $this->load->view('checkout-step-1',$data);
     }
 

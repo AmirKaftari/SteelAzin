@@ -70,16 +70,25 @@
                                         <input data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true" type="text" name="txtReceiver" id="txtReceiver" class="span4" >
                                     </div>
                                 </div>
+
                                 <div class="control-group">
                                     <label class="control-label" for="telephone">شماره تماس همراه<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
                                         <input type="tel" name="txtCellPhone" id="txtCellPhone" class="span4" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true">
                                     </div>
                                 </div>
+
                                 <div class="control-group">
                                     <label class="control-label" for="email">شماره تماس ثابت<span class="red-clr bold"> * </span></label>
                                     <div class="controls">
                                         <input type="text" name="txtPhone" id="txtPhone" class="span4" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true">
+                                    </div>
+                                </div>
+
+                                <div class="control-group">
+                                    <label class="control-label" for="email">پست الکترونیکی<span class="red-clr bold"> * </span></label>
+                                    <div class="controls">
+                                        <input type="text" name="txtEmail" id="txtEmail" class="span4" data-parsley-required-message="درج این فیلد اجباری است!"  data-parsley-required="true">
                                     </div>
                                 </div>
 

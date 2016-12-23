@@ -66,6 +66,9 @@
 							    <thead>
 							    	<tr>
 							    		<th colspan="2">محصول</th>
+										<th><div class="align-right">سمت زنجیر</div></th>
+										<th><div class="align-right">نوع پایه</div></th>
+										<th><div class="align-right">نوع موتور</div></th>
 							    		<th><div class="align-center">تعداد</div></th>
 							    		<th><div class="align-right">قیمت</div></th>
 							    	</tr>
@@ -75,12 +78,25 @@
 							        <tr>
 							        	<td class="image"><img src="<?php echo base_url('uploads/new_products/'.$Pic) ?>" alt="" width="124" height="124" /></td>
 							        	<td class="desc"><?php echo $Title; ?>&nbsp; <a title="Remove Item" class="icon-remove-sign" href="#"></a></td>
-							        	<td class="qty">
+										<td class="price">
+											<?php if($Zanjir = 'right') echo 'راست';else echo 'چپ' ?>
+										</td>
+
+										<td class="price">
+											<?php if($Paye == 'Saghfi') echo 'سقفی'  ; else 'دیواری'   ?>
+										</td>
+
+										<td class="price">
+											<?php if($Motor == 'Dasti') echo 'دستی'  ; else 'برقی'?>
+										</td>
+
+										<td class="qty">
 							        	    <input name="txtNewCount" id="txtNewCount" type="text" class="tiny-size" value="<?php echo $Count; ?>" />
 					            	    </td>
 							        	<td class="price">
 											<?php echo $Price; ?>
 							        	</td>
+
 							        </tr>
 							    </tbody>
 							</table>
