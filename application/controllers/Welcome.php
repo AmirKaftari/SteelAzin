@@ -28,12 +28,14 @@ class Welcome extends CI_Controller
 		{
 			$operator_valid = $this->Adminmodel->get_by_username_password($username,$password);
 			$user_valid = $this->Usermodel->get_by_email_password($username,$password);
+
 			if(count($operator_valid))
 			{
 				$arrayName = array(
 					'FullNameOperator' => $operator_valid->Fullname ,
 					'UsernameOperator' => $operator_valid->userName ,
 					'PasswordOperator' => $operator_valid->Password,
+					'IdOperator' => $operator_valid->ID,
 				);
 
 				$this->session->set_userdata($arrayName);
@@ -80,5 +82,46 @@ class Welcome extends CI_Controller
 		$this->notifications->notify(Translate::InsertAccountInfo);
 		echo $this->notifications->display_js();
 		$this->index();
+	}
+
+	function successRegister()
+	{
+		$this->notifications->notify(Translate::successRegister);
+		echo $this->notifications->display_js();
+		$this->index();
+	}
+
+	function notUniqueUsername()
+	{
+		$this->notifications->notify(Translate::notUniqueUsername);
+		echo $this->notifications->display_js();
+		$this->index();
+	}
+
+	function register()
+	{
+		$username =  $this->input->post('inputEmailRegister',TRUE);
+		$password =  $this->input->post('inputPasswordRegister',TRUE);
+		$mobile =  $this->input->post('inputMobileRegister',TRUE);
+
+		if($username != '' && $password != '' && $mobile != '')
+		{
+			$checkUsername = $this->Usermodel->get_by_username($username);
+			if(!$checkUsername)
+			{
+				$data = array('Username'=>$username , 'Password'=>$password, 'CellPhone'=>$mobile);
+				$this->session->set_userdata($data);
+				$this->Usermodel->insert($data);
+				$this->successRegister();
+			}
+			else
+			{
+				$this->notUniqueUsername();
+			}
+		}
+		else
+		{
+			$this->emptyValue();
+		}
 	}
 }

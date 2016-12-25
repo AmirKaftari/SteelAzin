@@ -76,16 +76,21 @@
         <h3 id="loginModalLabel"><span class="light">ورود</span> به استیل آذین </h3>
     </div>
     <div class="modal-body">
-        <form method="post" action="<?php echo base_url('Welcome/validate_user') ?>">
+        <form method="post" action="<?php echo base_url('Welcome/validate_user') ?>" class="parsley-validate">
             <div class="control-group">
                 <div class="controls">
-                    <input type="text" class="input-block-level" name="UserName" id="inputEmail" placeholder="پست الکترونیکی">
+                    <input type="text" class="input-block-level" name="UserName"
+                           data-parsley-required-message = "<?php echo Translate::RequireField ?>"
+                           data-parsley-required="true"
+                           id="inputEmail" placeholder="<?php echo Translate::UsernameAndEmail ?>">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputPassword">رمز عبور</label>
                 <div class="controls">
-                    <input type="password" class="input-block-level" name="Password" id="inputPassword" placeholder="رمز عبور">
+                    <input type="password" data-parsley-required-message = "<?php echo Translate::RequireField ?>"
+                           data-parsley-required="true"
+                           class="input-block-level" name="Password" id="inputPassword" placeholder="رمز عبور">
                 </div>
             </div>
             <div class="control-group">
@@ -113,24 +118,31 @@
         <h3 id="registerModalLabel"><span class="light">ثبت نام</span> در استیل آذین </h3>
     </div>
     <div class="modal-body">
-        <form method="post" action="#">
+        <form method="post" action="<?php echo base_url('Welcome/register') ?>" class="parsley-validate">
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputEmailRegister">ایمیل</label>
                 <div class="controls">
-                    <input type="email" class="input-block-level" id="inputEmailRegister" placeholder="پست الکترونیکی">
+                    <input type="text" data-parsley-required-message = "<?php echo Translate::RequireField ?>"
+                           data-parsley-required="true"
+                           class="input-block-level" name="inputEmailRegister"
+                           id="inputEmailRegister" placeholder="نام کاربری یا پست الکترونیکی">
                 </div>
             </div>
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputPasswordRegister">رمز عبور</label>
                 <div class="controls">
-                    <input type="password" class="input-block-level" id="inputPasswordRegister" placeholder="گذرواژه">
+                    <input type="password" data-parsley-required-message = "<?php echo Translate::RequireField ?>"
+                           data-parsley-required="true"
+                           class="input-block-level" name="inputPasswordRegister" id="inputPasswordRegister" placeholder="گذرواژه">
                 </div>
             </div>
 
             <div class="control-group">
                 <label class="control-label hidden shown-ie8" for="inputPasswordRegister">شماره موبایل</label>
                 <div class="controls">
-                    <input type="text" class="input-block-level" id="inputPasswordRegister" placeholder="شماره موبایل">
+                    <input type="text" data-parsley-required-message = "<?php echo Translate::RequireField ?>"
+                           data-parsley-required="true"
+                           class="input-block-level" name="inputMobileRegister" id="inputMobileRegister" placeholder="شماره موبایل">
                 </div>
             </div>
 

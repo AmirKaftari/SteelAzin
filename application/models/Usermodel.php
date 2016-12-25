@@ -36,7 +36,13 @@ class Usermodel extends CI_Model
         $this->db->where('Password', $password);
         return $this->db->get($this->table)->row();
     }
-    
+
+    function get_by_username($username)
+    {
+        $this->db->where('Username',$username);
+        return  count($this->db->get($this->table)->row());
+    }
+
     // get total rows
     function total_rows() {
         $this->db->from($this->table);
@@ -53,24 +59,24 @@ class Usermodel extends CI_Model
     // get search total rows
     function search_total_rows($keyword = NULL) {
         $this->db->like('ID', $keyword);
-	$this->db->or_like('Fullname', $keyword);
-	$this->db->or_like('Name', $keyword);
-	$this->db->or_like('Lastname', $keyword);
-	$this->db->or_like('Birthday', $keyword);
-	$this->db->or_like('Gender', $keyword);
-	$this->db->or_like('Nationalcode', $keyword);
-	$this->db->or_like('IdentityNumber', $keyword);
-	$this->db->or_like('State', $keyword);
-	$this->db->or_like('City', $keyword);
-	$this->db->or_like('District', $keyword);
-	$this->db->or_like('Phone', $keyword);
-	$this->db->or_like('CellPhone', $keyword);
-	$this->db->or_like('CodePost', $keyword);
-	$this->db->or_like('Address', $keyword);
-	$this->db->or_like('Username', $keyword);
-	$this->db->or_like('Password', $keyword);
-	$this->db->or_like('Email', $keyword);
-	$this->db->from($this->table);
+        $this->db->or_like('Fullname', $keyword);
+        $this->db->or_like('Name', $keyword);
+        $this->db->or_like('Lastname', $keyword);
+        $this->db->or_like('Birthday', $keyword);
+        $this->db->or_like('Gender', $keyword);
+        $this->db->or_like('Nationalcode', $keyword);
+        $this->db->or_like('IdentityNumber', $keyword);
+        $this->db->or_like('State', $keyword);
+        $this->db->or_like('City', $keyword);
+        $this->db->or_like('District', $keyword);
+        $this->db->or_like('Phone', $keyword);
+        $this->db->or_like('CellPhone', $keyword);
+        $this->db->or_like('CodePost', $keyword);
+        $this->db->or_like('Address', $keyword);
+        $this->db->or_like('Username', $keyword);
+        $this->db->or_like('Password', $keyword);
+        $this->db->or_like('Email', $keyword);
+	    $this->db->from($this->table);
         return $this->db->count_all_results();
     }
 
@@ -78,24 +84,24 @@ class Usermodel extends CI_Model
     function search_index_limit($limit, $start = 0, $keyword = NULL) {
         $this->db->order_by($this->id, $this->order);
         $this->db->like('ID', $keyword);
-	$this->db->or_like('Fullname', $keyword);
-	$this->db->or_like('Name', $keyword);
-	$this->db->or_like('Lastname', $keyword);
-	$this->db->or_like('Birthday', $keyword);
-	$this->db->or_like('Gender', $keyword);
-	$this->db->or_like('Nationalcode', $keyword);
-	$this->db->or_like('IdentityNumber', $keyword);
-	$this->db->or_like('State', $keyword);
-	$this->db->or_like('City', $keyword);
-	$this->db->or_like('District', $keyword);
-	$this->db->or_like('Phone', $keyword);
-	$this->db->or_like('CellPhone', $keyword);
-	$this->db->or_like('CodePost', $keyword);
-	$this->db->or_like('Address', $keyword);
-	$this->db->or_like('Username', $keyword);
-	$this->db->or_like('Password', $keyword);
-	$this->db->or_like('Email', $keyword);
-	$this->db->limit($limit, $start);
+        $this->db->or_like('Fullname', $keyword);
+        $this->db->or_like('Name', $keyword);
+        $this->db->or_like('Lastname', $keyword);
+        $this->db->or_like('Birthday', $keyword);
+        $this->db->or_like('Gender', $keyword);
+        $this->db->or_like('Nationalcode', $keyword);
+        $this->db->or_like('IdentityNumber', $keyword);
+        $this->db->or_like('State', $keyword);
+        $this->db->or_like('City', $keyword);
+        $this->db->or_like('District', $keyword);
+        $this->db->or_like('Phone', $keyword);
+        $this->db->or_like('CellPhone', $keyword);
+        $this->db->or_like('CodePost', $keyword);
+        $this->db->or_like('Address', $keyword);
+        $this->db->or_like('Username', $keyword);
+        $this->db->or_like('Password', $keyword);
+        $this->db->or_like('Email', $keyword);
+        $this->db->limit($limit, $start);
         return $this->db->get($this->table)->result();
     }
 
