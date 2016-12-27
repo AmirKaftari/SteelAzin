@@ -14,6 +14,12 @@ function create_instance_access()
     return $CI;
 }
 
+function load_library($name)
+{
+    $my_this = create_instance_access();
+    $my_this->load->library($name);
+}
+
 function instance($model, $function, $variables = null,$twoVariable = null)
 {
     $my_this = create_instance_access();

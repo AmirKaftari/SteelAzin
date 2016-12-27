@@ -1,4 +1,7 @@
-<?php  require_once('includes/header_index.php'); ?>
+<?php
+	require_once('includes/header_index.php');
+	load_library('Translate');
+?>
 <body class=" checkout-page">
     <div class="master-wrapper">
     <div class="container">
@@ -87,7 +90,7 @@
 										</td>
 
 										<td class="price">
-											<?php if($Motor == 'Dasti') echo 'دستی'  ; else 'برقی'?>
+											<?php if($Motor == 'Dasti') echo Translate::MotorDasti; else Translate::MotorBarghi?>
 										</td>
 
 										<td class="qty">
@@ -98,6 +101,8 @@
 							        	</td>
 
 							        </tr>
+
+
 							    </tbody>
 							</table>
 							<p class="right-align">
@@ -106,7 +111,26 @@
 							</p>
 							</form>
 							<hr />
-							
+							<table class="table table-items">
+
+								<tr>
+									<td class="stronger">
+										<?php
+											echo ($Motor == Translate::MotorBarghi) ? Translate::MotorBarghi : Translate::MotorDasti;
+										?>
+									</td>
+									<td class="stronger"><div class="align-right"></div>
+										<?php
+											$GLOBALS['SumPrice'] = ($Motor == Translate::MotorBarghi) ? $SettingInfo->motorBarghi : $SettingInfo->motorDasti;
+											echo $GLOBALS['SumPrice'];
+										?>
+									</td>
+								</tr>
+								<tr>
+									<td class="stronger">جمع کل :</td>
+									<td class="stronger"><div class="size-16 align-right"><?php echo $Price + $GLOBALS['SumPrice'] ?></div></td>
+								</tr>
+							</table>
 
                     	</div>
                     </div>

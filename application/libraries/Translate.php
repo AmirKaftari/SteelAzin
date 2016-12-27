@@ -18,4 +18,8 @@ class Translate
     const UsernameAndEmail = 'نام کاربری یا پست الکترونیکی';
     const RequireField = 'درج این فیلد اجباری است!';
     const ListProducts = "لیست محصولات";
+
+    /*Products*/
+    const MotorDasti = 'موتور دستی';
+    const MotorBarghi = 'موتور برقی';
 }

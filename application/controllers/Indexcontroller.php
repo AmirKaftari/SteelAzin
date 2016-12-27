@@ -14,6 +14,7 @@ class Indexcontroller extends CI_Controller
         $this->load->model('Productpicmodel');
         $this->load->model('Custommodel');
         $this->load->model('Categorymodel');
+        $this->load->model('Settingmodel');
     }
 
     public function single_product($id)
@@ -32,6 +33,7 @@ class Indexcontroller extends CI_Controller
 
     public function start_buy()
     {
+        $setting_info = $this->Settingmodel->get_record();
         $data = array(
             'Title' => $this->input->post('txtTitle'),
             'Price'=> $this->input->post('txtCostValue'),
@@ -41,7 +43,9 @@ class Indexcontroller extends CI_Controller
             'Motor'=> $this->input->post('txtMotor'),
             'Zanjir'=> $this->input->post('txtZanjir'),
             'Paye'=> $this->input->post('txtPayeh'),
-            'Nasb'=> $this->input->post('txtNasb'));
+            'Nasb'=> $this->input->post('txtNasb'),
+            'SettingInfo'=>$setting_info
+        );
 
         $this->session->set_userdata($data);
         $this->load->view('checkout-step-1',$data);

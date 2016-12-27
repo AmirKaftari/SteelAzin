@@ -44,8 +44,8 @@ class Welcome extends CI_Controller
 			elseif(count($user_valid))
 			{
 				$arrayName = array(
-					'IdUser' => $user_valid->Fullname ,
-					'FullNameUser' => $user_valid->userName ,
+					'userId' => $user_valid->ID ,
+					'FullNameUser' => $user_valid->Username ,
 				);
 
 				$this->session->set_userdata($arrayName);
